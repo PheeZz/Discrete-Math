@@ -4,8 +4,9 @@
 #include <bits/stdc++.h> //для ф-ии sort
 using namespace std;
 
-void input(string in, vector<char> &vec) //функция для заполнения векторов (множеств)
+void input(vector<char> &vec) //функция для заполнения векторов (множеств)
 {
+    string in;
     cout << "input new arr: \n";
     cin >> in;                  //вводим вспомогательную строку
     sort(in.begin(), in.end()); //сортируем ее
@@ -23,7 +24,7 @@ void printVec(vector<char> vec) //функция для вывода содер�
     {
         cout << vec[i];
     }
-    cout << ".\n";
+    cout << "\n";
 }
 
 int getSize(vector<char> &vec1, vector<char> &vec2)
@@ -41,13 +42,13 @@ int getSize(vector<char> &vec1, vector<char> &vec2)
     };
     return size;
 }
-bool crossing(vector<char> vec1, vector<char> vec2, vector<char> &output)
+bool crossing(vector<char> vec1, vector<char> vec2, vector<char> &output) // works properly
 {
     int size = getSize(vec1, vec2);
     bool flag = false;
     for (int i = 0; i < size; i++)
     {
-        for (int j = 0; i < size; j++)
+        for (int j = 0; j < size; j++)
         {
             if (vec1[i] == vec2[j])
             {
@@ -102,12 +103,15 @@ bool difference(vector<char> vec1, vector<char> vec2, vector<char> &output)
         int size = getSize(vec1, tmp);
         for (int i = 0; i < size; i++)
         {
-            for (int j = 0; i < size; j++)
+            for (int j = 0; j < size; j++)
             {
-                if (vec1[i] == tmp[j])
+                if (vec1[i] != tmp[j])
                 {
-                    output.push_back(vec1[i]);
-                    flag = true;
+                    if (isNotExist(output, tmp[j]))
+                    {
+                        output.push_back(tmp[j]);
+                        flag = true;
+                    }
                 }
             }
         }
