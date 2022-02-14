@@ -7,13 +7,12 @@ int main()
     input(inputString, vecA);
     input(inputString, vecB);
     input(inputString, vecC);
-
+    system("cls");
     cout << "'A' arr: ";
     printVec(vecA);
     cout << "'B' arr: ";
     printVec(vecB);
     cout << "'C' arr: ";
-    printVec(vecC);
-
+    printVec(vecC); 
     system("pause");
 }
