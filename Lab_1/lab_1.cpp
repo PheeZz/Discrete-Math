@@ -5,20 +5,20 @@
 
 using namespace std;
 
-void input(string in, vector<char> &vec)
+void input(string in, vector<char> &vec) //функция для заполнения векторов (множеств)
 {
     cout << "input new arr: \n";
-    cin >> in;
-    sort(in.begin(), in.end());
+    cin >> in;                  //вводим вспомогательную строку
+    sort(in.begin(), in.end()); //сортируем ее
     for (int i = 0; i < in.size(); i++)
     {
-        vec.push_back(in[i]);
+        vec.push_back(in[i]); //заполняет вектор char'ов посимвольно из отсортированной строки
     }
     in.clear();
     cout << '\n';
 }
 
-void printVec(vector<char> vec)
+void printVec(vector<char> vec) //функция для вывода содержимого множества
 {
     for (int i = 0; i < vec.size(); i++)
     {
@@ -26,6 +26,7 @@ void printVec(vector<char> vec)
     }
     cout << '\n';
 }
+
 int main()
 {
     string inputString;
