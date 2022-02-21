@@ -7,16 +7,53 @@ void taskList()
 }
 void task1(vector<char> vecA, vector<char> vecB)
 {
-    vector<char> diffvecAvecB;
-    difference(vecA, vecB, diffvecAvecB); //(A \ B)
-    vector<char> crossvecAvecB;
-    crossing(vecA, vecB, crossvecAvecB); //(A n B)
+    vector<char> diffResult;
+    difference(vecA, vecB, diffResult); //(A \ B)
+    vector<char> crossResult;
+    crossing(vecA, vecB, crossResult); //(A n B)
     vector<char> taskOutput;
-    unification(diffvecAvecB, crossvecAvecB, taskOutput);
-    printVec(taskOutput);
+    unification(diffResult, crossResult, taskOutput);
+    cout << "\nresult is: ";
+    if (taskOutput.size() == 0)
+    {
+        cout << "NONE\n";
+    }
+    else
+        printVec(taskOutput);
+}
+void task2(vector<char> vecA, vector<char> vecB)
+{
+    vector<char> diffResult;
+    difference(vecA, vecB, diffResult); //(A \ B)
+    vector<char> unificationResult;
+    crossing(vecA, vecB, unificationResult); //(A n B)
+    vector<char> taskOutput;
+    crossing(diffResult, unificationResult, taskOutput); //(A \\ B) n (A n B)
+    cout << "\nresult is: ";
+    if (taskOutput.size() == 0)
+    {
+        cout << "NONE\n";
+    }
+    else
+        printVec(taskOutput);
+}
+void task3(vector<char> vecA, vector<char> vecB)
+{
+    vector<char> diffResult;
+    difference(vecA, vecB, diffResult); //(A \ B)
+    vector<char> crossingResult;
+    crossing(diffResult, vecB, crossingResult); //(A \\ B) n B
+    cout << "\nresult is: ";
+    if (crossingResult.size() == 0)
+    {
+        cout << "NONE\n";
+    }
+    else
+        printVec(crossingResult);
 }
 int main()
 {
+
     vector<char> vecA, vecB, vecC;
     input(vecA);
     input(vecB);
@@ -30,9 +67,9 @@ int main()
     printVec(vecC);
     taskList();
 
-    vector<char> diffvecAvecB;
-    crossing(vecA, vecB, diffvecAvecB); //(A \ B)
-    printVec(diffvecAvecB);
+    task1(vecA, vecB);
+    task2(vecA, vecB);
+    task3(vecA, vecB);
 
     system("pause");
 }
