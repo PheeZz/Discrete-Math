@@ -13,4 +13,4 @@ def solution(digit):
 
 value = input('Введите номер элемента: ')
 print('Общее решение: ', solution(int(value)))
-print('Рекуррентная формула: ', solution(int(value)))
+print('Рекуррентная формула: ', recurrent(int(value)))
